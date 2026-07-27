@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Placement Prediction</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+<!-- ================= Navbar ================= -->
+
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
+
+    <div class="container">
+
+        <a class="navbar-brand fw-bold" href="/">
+            <i class="fa-solid fa-brain"></i>
+            AI Placement Predictor
+        </a>
+
+        <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#menu">
+
+            <span class="navbar-toggler-icon"></span>
+
+        </button>
+
+        <div class="collapse navbar-collapse" id="menu">
+
+            <ul class="navbar-nav ms-auto align-items-center">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link active" href="/predict">Predict</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/analytics">Analytics</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/about">About</a>
+                </li>
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<div class="container py-5">
+
+<h2 class="text-center mb-5">
+
+🎓 Student Placement Prediction
+
+</h2>
+
+<form action="/predict" method="POST">
+
+<div class="row">
+
+<div class="col-md-6 mb-3">
+<label>SSC Percentage</label>
+<input type="number" class="form-control" name="ssc_p" step="0.01" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>HSC Percentage</label>
+<input type="number" class="form-control" name="hsc_p" step="0.01" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Degree Percentage</label>
+<input type="number" class="form-control" name="degree_p" step="0.01" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>MBA Percentage</label>
+<input type="number" class="form-control" name="mba_p" step="0.01" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Employability Test</label>
+<input type="number" class="form-control" name="etest_p" step="0.01" required>
+</div>
+
+<div class="col-md-6 mb-3">
+<label>Gender</label>
+
+<select class="form-select" name="gender">
+
+<option value="M">Male</option>
+
+<option value="F">Female</option>
+
+</select>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Work Experience</label>
+
+<select class="form-select" name="workex">
+
+<option value="Yes">Yes</option>
+
+<option value="No">No</option>
+
+</select>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Specialisation</label>
+
+<select class="form-select" name="specialisation">
+
+<option value="Mkt&HR">Marketing & HR</option>
+
+<option value="Mkt&Fin">Marketing & Finance</option>
+
+</select>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>HSC Stream</label>
+
+<select class="form-select" name="hsc_s">
+
+<option value="Commerce">Commerce</option>
+
+<option value="Science">Science</option>
+
+<option value="Arts">Arts</option>
+
+</select>
+
+</div>
+
+<div class="col-md-6 mb-3">
+
+<label>Degree Type</label>
+
+<select class="form-select" name="degree_t">
+
+<option value="Sci&Tech">Science & Technology</option>
+
+<option value="Comm&Mgmt">Commerce & Management</option>
+
+<option value="Others">Others</option>
+
+</select>
+
+</div>
+
+</div>
+
+<div class="text-center mt-4">
+
+<button class="btn btn-primary btn-lg">
+
+Predict Placement
+
+</button>
+{% if prediction %}
+
+<div class="card shadow-lg border-0 mt-5 result-card">
+
+    <div class="card-body text-center">
+
+        <i class="fa-solid {{ icon }} result-icon text-{{ card_color }}"></i>
+
+        <h2 class="mt-3 fw-bold text-{{ card_color }}">
+            {{ prediction }}
+        </h2>
+
+        <p class="text-muted">
+            Logistic Regression Prediction Model
+        </p>
+
+        <hr>
+
+        <h5 class="mb-3">
+            Placement Probability
+        </h5>
+
+        <h1 class="display-2 fw-bold text-{{ card_color }}">
+            {{ "%.1f"|format(probability) }}%
+        </h1>
+
+        <div class="progress mt-4" style="height:20px;">
+
+            <div
+                id="progressBar"
+                class="progress-bar bg-{{ card_color }}"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100">
+            </div>
+
+        </div>
+
+        <h4 class="mt-4">
+
+            Confidence Level
+
+            <span class="badge bg-{{ card_color }}">
+                {{ confidence }}
+            </span>
+
+        </h4>
+        <hr>
+
+            <h4 class="mb-4">
+                AI Suggestions
+            </h4>
+
+            <div class="alert alert-light text-start">
+
+                {% if probability >= 80 %}
+
+                ✅ Excellent placement chances.<br>
+                ✅ Keep improving coding and communication skills.<br>
+                ✅ Practice DSA and aptitude regularly.
+
+                {% elif probability >= 60 %}
+
+                ⚡ Good placement chances.<br>
+                ⚡ Improve aptitude and interview preparation.<br>
+                ⚡ Build one or two strong projects.
+
+                {% else %}
+
+                📚 Focus on improving academic performance.<br>
+                💻 Strengthen technical skills.<br>
+                🎯 Practice mock interviews and aptitude tests.
+
+                {% endif %}
+
+            </div>
+            
+        <div class="row mt-5">
+
+            <div class="col-md-4">
+
+                <div class="feature-box">
+
+                    <i class="fa-solid fa-graduation-cap"></i>
+
+                    <h6 class="mt-3">Academic Score</h6>
+
+                    <h4>{{ academic_average|round(1) }}%</h4>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="feature-box">
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+                    <h6 class="mt-3">Model Accuracy</h6>
+
+                    <h4>83.72%</h4>
+
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+
+                <div class="feature-box">
+
+                    <i class="fa-solid fa-robot"></i>
+
+                    <h6 class="mt-3">AI Algorithm</h6>
+
+                    <h4>Logistic Regression</h4>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document.getElementById("progressBar").style.width = "{{ probability }}%";
+
+</script>
+
+{% endif %}
+
+</div>
+
+</form>
+
+</div>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+{% if prediction %}
+<script>
+    document.getElementById("progressBar").style.width = "{{ probability }}%";
+</script>
+{% endif %}
+</body>
+
+</html>

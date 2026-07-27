@@ -1,0 +1,690 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+
+    background:linear-gradient(135deg,#0f172a,#1e3a8a);
+    color:white;
+    min-height:100vh;
+}
+
+.navbar{
+
+    background:transparent;
+    padding:20px 0;
+
+}
+
+.navbar-brand{
+
+    font-size:28px;
+}
+
+.nav-link{
+
+    color:white!important;
+    margin-left:20px;
+}
+
+.hero{
+
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+
+}
+
+.hero h1{
+
+    font-size:60px;
+    font-weight:700;
+    line-height:1.2;
+
+}
+
+.hero span{
+
+    color:#38bdf8;
+
+}
+
+.hero p{
+
+    margin-top:25px;
+    font-size:20px;
+    color:#d1d5db;
+
+}
+
+.btn-primary{
+
+    margin-top:30px;
+    padding:15px 35px;
+    border-radius:40px;
+    background:#38bdf8;
+    border:none;
+}
+
+.btn-primary:hover{
+
+    background:#0ea5e9;
+
+}
+
+.hero-img{
+
+    width:100%;
+    max-width:500px;
+
+}
+.hero-icon{
+    font-size:220px;
+    color:#38bdf8;
+}
+/* ================= Prediction Section ================= */
+
+.predict-section{
+    padding:100px 10%;
+    background:#f5f8ff;
+}
+
+.predict-section h2{
+    text-align:center;
+    font-size:42px;
+    color:#1b2b68;
+    margin-bottom:40px;
+}
+
+.prediction-form{
+
+    max-width:800px;
+    margin:auto;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+
+    background:white;
+    padding:40px;
+    border-radius:15px;
+
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+
+}
+
+.input-group{
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.input-group label{
+
+    margin-bottom:8px;
+    font-weight:600;
+    color:#1b2b68;
+    font-size:15px;
+
+}
+
+.input-group input,
+.input-group select{
+
+    padding:14px;
+    border-radius:8px;
+    border:1px solid #ddd;
+    font-size:16px;
+
+}
+
+.prediction-form button{
+
+    grid-column:span 2;
+
+    padding:16px;
+
+    border:none;
+
+    background:#2ea8ff;
+
+    color:white;
+
+    font-size:18px;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.prediction-form button:hover{
+
+    background:#0078ff;
+
+}
+.result-box{
+    margin-top:35px;
+    padding:25px;
+    border-radius:18px;
+    background:linear-gradient(135deg,#0d6efd,#6610f2);
+    color:#fff;
+    font-size:26px;
+    font-weight:700;
+    text-align:center;
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+    animation:fadeIn .5s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+body{
+    padding-top:80px;
+}
+/* ================= NAVBAR ================= */
+
+.custom-navbar{
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    z-index: 9999;
+
+    background: rgba(13,13,67,0.95);
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 5px 20px rgba(0,0,0,.25);
+
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+
+    background:#0d0d43;
+
+    color:white;
+
+    padding:60px 0 20px;
+
+    margin-top:80px;
+
+}
+
+.footer h4,
+.footer h5{
+
+    margin-bottom:20px;
+
+    font-weight:600;
+
+}
+
+.footer ul{
+
+    list-style:none;
+
+    padding:0;
+
+}
+
+.footer ul li{
+
+    margin-bottom:10px;
+
+}
+
+.footer ul li a{
+
+    color:#ddd;
+
+    text-decoration:none;
+
+    transition:.3s;
+
+}
+
+.footer ul li a:hover{
+
+    color:#efb71a;
+
+}
+
+.footer hr{
+
+    border-color:rgba(255,255,255,.15);
+
+    margin:30px 0;
+
+}
+.nav-link{
+    position:relative;
+    margin-left:20px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-link::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:0;
+
+    bottom:-5px;
+
+    width:0;
+
+    height:2px;
+
+    background:#efb71a;
+
+    transition:.3s;
+
+}
+
+.nav-link:hover::after{
+
+    width:100%;
+
+}
+
+.nav-link.active::after{
+
+    width:100%;
+
+}
+/* ================= Analytics ================= */
+
+.graph-card{
+
+    border:none;
+
+    border-radius:20px;
+
+    transition:.4s;
+
+    overflow:hidden;
+
+}
+
+.graph-card:hover{
+
+    transform:translateY(-10px);
+
+    box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+}
+
+.graph-card img{
+
+    transition:.5s;
+
+}
+
+.graph-card:hover img{
+
+    transform:scale(1.05);
+
+}
+
+footer{
+
+    color:white;
+
+}
+/* Analytics Cards */
+
+.analytics-card{
+
+    border:none;
+
+    border-radius:20px;
+
+    transition:.4s;
+
+}
+
+.analytics-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 20px 40px rgba(0,0,0,.3);
+
+}
+
+.analytics-card h2{
+
+    font-size:36px;
+
+    font-weight:700;
+
+}
+.graph-description{
+
+    font-size:15px;
+
+    color:#666;
+
+    text-align:center;
+
+    margin-top:15px;
+
+    line-height:1.6;
+
+}
+/* ================= Prediction Result ================= */
+
+.result-card{
+
+    border-radius:25px;
+    margin-top:40px;
+    background:white;
+    animation:fadeUp .8s ease;
+
+}
+
+.result-icon{
+
+    font-size:80px;
+
+}
+
+.feature-box{
+
+    padding:25px;
+    border-radius:18px;
+    background:#f8f9fa;
+    transition:.3s;
+
+}
+
+.feature-box:hover{
+
+    transform:translateY(-8px);
+    box-shadow:0 12px 25px rgba(0,0,0,.12);
+
+}
+
+.feature-box i{
+
+    font-size:35px;
+    color:#38bdf8;
+
+}
+
+.progress{
+
+    border-radius:20px;
+    overflow:hidden;
+
+}
+
+.progress-bar{
+
+    transition:width 1.5s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+        transform:translateY(0);
+
+    }
+
+}
+/* ==========================================
+   MOBILE RESPONSIVE
+========================================== */
+
+@media (max-width: 768px){
+
+    /* Navbar */
+
+    .custom-navbar{
+        padding:10px 0;
+    }
+
+    .navbar-brand{
+        font-size:22px;
+    }
+
+    .navbar-collapse{
+        background:#16154d;
+        padding:15px;
+        margin-top:10px;
+        border-radius:12px;
+    }
+
+    .nav-link{
+        margin:10px 0;
+        text-align:center;
+    }
+
+    /* Hero */
+
+    .hero{
+
+        min-height:auto;
+
+        padding-top:120px;
+        padding-bottom:60px;
+
+        text-align:center;
+
+    }
+
+    .hero h1{
+
+        font-size:48px;
+
+        line-height:1.15;
+
+    }
+
+    .hero p{
+
+        font-size:18px;
+
+        margin:25px auto;
+
+    }
+
+    .hero-icon{
+
+        font-size:180px;
+
+        margin-top:35px;
+
+    }
+
+    /* Buttons */
+
+    .hero .btn{
+
+        width:220px;
+
+        height:55px;
+
+        font-size:18px;
+
+    }
+
+    /* Footer */
+
+    .footer{
+
+        text-align:center;
+
+    }
+
+    .footer .col-lg-4{
+
+        margin-bottom:35px;
+
+    }
+
+}
+/* =======================================
+   ABOUT PAGE RESPONSIVE
+======================================= */
+
+@media (max-width:768px){
+
+    /* Main container */
+
+    .about-section,
+    .about-container,
+    .container{
+
+        padding-left:20px;
+        padding-right:20px;
+
+    }
+
+    /* Hero */
+
+    .about-hero{
+
+        padding-top:110px;
+        padding-bottom:40px;
+
+        text-align:center;
+
+    }
+
+    .about-hero h1{
+
+        font-size:40px;
+
+        line-height:1.2;
+
+    }
+
+    .about-hero p{
+
+        font-size:17px;
+
+    }
+
+    /* Cards */
+
+    .card{
+
+        margin-bottom:20px;
+
+        border-radius:18px;
+
+    }
+
+    .card-body{
+
+        padding:20px;
+
+    }
+
+    /* Technology cards */
+
+    .tech-card{
+
+        padding:20px;
+
+        min-height:170px;
+
+    }
+
+    .tech-card i{
+
+        font-size:55px;
+
+        margin-bottom:15px;
+
+    }
+
+    /* Workflow */
+
+    .workflow-card{
+
+        padding:25px;
+
+        text-align:center;
+
+    }
+
+    /* Performance */
+
+    .performance-card{
+
+        margin-bottom:18px;
+
+    }
+
+    /* Developer */
+
+    .developer-card{
+
+        padding:25px;
+
+    }
+
+    .developer-card img{
+
+        width:120px;
+
+        height:120px;
+
+    }
+
+    .developer-card h3{
+
+        font-size:26px;
+
+    }
+
+    /* GitHub button */
+
+    .developer-card .btn{
+
+        width:100%;
+
+    }
+
+}
+img{
+
+    max-width:100%;
+
+    height:auto;
+
+}
